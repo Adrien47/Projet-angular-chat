@@ -9,37 +9,37 @@ import {Salon} from './salon';
 })
 export class SalonComponent implements OnInit {
 
-  private formEleve: Salon = null;
+  private formSalon: Salon = null;
 
-  constructor(private eleveService: SalonService) {
+  constructor(private salonService: SalonService) {
   }
 
   ngOnInit() {
   }
 
   public list() {
-    return this.eleveService.findAll();
+    return this.salonService.findAll();
   }
 
   public add() {
-    this.formEleve = new Salon();
+    this.formSalon = new Salon();
   }
 
   public edit(id: number) {
-    this.formEleve = this.eleveService.findById(id);
+    this.formSalon = this.salonService.findById(id);
   }
 
   public save() {
-    this.eleveService.save(this.formEleve);
-    this.formEleve = null;
+    this.salonService.save(this.formSalon);
+    this.formSalon = null;
   }
 
   public delete(id: number) {
-    this.eleveService.delete(this.eleveService.findById(id));
+    this.salonService.delete(this.salonService.findById(id));
   }
 
   public cancel(id: number) {
-      this.formEleve = null;
+      this.formSalon = null;
     }
 
 }

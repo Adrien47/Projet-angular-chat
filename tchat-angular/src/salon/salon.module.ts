@@ -1,20 +1,19 @@
-import {NgModule} from '@angular/core';
 
-import {RouterModule, Routes} from '@angular/router';
-
-import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 
 import {SalonService} from './salon.service';
 import {SalonComponent} from './salon.component';
 import {SalonDetailComponent} from './salon-detail.component';
-import {CiviliteAsStringPipe} from './civilite.pipe';
+import {RouterModule, Routes} from '@angular/router';
+import {HttpModule} from '@angular/http';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+
 
 
 const routes: Routes = [
-  {path: 'eleve', component: SalonComponent},
-  {path: 'eleve/:id', component: SalonDetailComponent},
+  {path: 'salon', component: SalonComponent},
+  {path: 'salon/:id', component: SalonDetailComponent},
 
 ];
 
@@ -34,7 +33,7 @@ const routes: Routes = [
 
    SalonComponent,
     SalonDetailComponent,
-    CiviliteAsStringPipe
+
 
   ],
   exports: [ ],

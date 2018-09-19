@@ -1,16 +1,18 @@
-import { Personne } from '../personne/personne';
-import { Civilite } from './civilite.enum';
+export class Salon {
+  id: number;
+  version: number;
+  nom: string;
+  description: string;
+  dateCreation: Date;
+  créateur: any = '';
 
-export class Salon extends Personne {
-  civilite: Civilite;
-  dateNaissance: Date;
-  formateur: any = '';
 
+  constructor(id?: number, version?: number, nom?: string, description?: string, dateCreation?: Date) {
+    this.id = id;
+    this.version = version;
+    this.nom = nom;
+    this.description = description;
+    this.dateCreation = dateCreation;
 
-
-  constructor(id?: number, civilite?: Civilite, nom?: string, prenom?: string, dateNaissance?: Date) {
-    super(id, nom, prenom);
-    this.civilite = civilite;
-    this.dateNaissance = dateNaissance;
   }
 }

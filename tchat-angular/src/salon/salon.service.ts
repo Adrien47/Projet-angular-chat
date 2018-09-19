@@ -1,25 +1,27 @@
 import {Injectable} from '@angular/core';
 import {Salon} from './salon';
+
 import {Http} from '@angular/http';
-import {AppConfigService} from '../app-config.service';
+import {AppConfigService} from '../app/app-config.service';
 
 
 @Injectable()
 export class SalonService {
-  eleves: Array<Salon> = new Array<Salon>();
+  salons: Array<Salon> = new Array<Salon>();
   apiUrl = '';
 
   constructor(private http: Http, private appConfig: AppConfigService) {
-    this.apiUrl = appConfig.apiUrl + '/eleve/';
+    this.apiUrl = appConfig.apiUrl + '/salon/';
 
     this.http
       .get(this.apiUrl)
-      .subscribe(resp => this.eleves = resp.json());
+      .subscribe(resp => this.salons = resp.json());
+
 
   }
 
   public findAll() {
-    return this.eleves;
+    return this.salons;
   }
 
   public findById(id: number, http?: boolean): any {
@@ -28,37 +30,37 @@ export class SalonService {
         .get(this.apiUrl + id);
     }
 
-    for (const eleve of this.eleves) {
-      if (eleve.id === id) {
-        return eleve;
+    for (const salon of this.salons) {
+      if (salon.id === id) {
+        return salon;
       }
     }
 
     return null;
   }
 
-  public save(eleve: Salon) {
-    if (eleve) {
-      if (!eleve.id) {
+  public save(salon: Salon) {
+    if (salon) {
+      if (!salon.id) {
 
-        if (this.eleves.length > 0) {
-          eleve.id = this.eleves[this.eleves.length - 1].id + 1;
+        if (this.salons.length > 0) {
+          salon.id = this.salons[this.salons.length - 1].id + 1;
         } else {
-          eleve.id = 1;
+          salon.id = 1;
         }
 
 
         this.http
-          .post(this.apiUrl, eleve)
+          .post(this.apiUrl, salon)
           .subscribe(
-            resp => this.eleves.push(eleve),
+            resp => this.salons.push(salon),
             err => console.log(err)
           );
 
 
       } else {
         this.http
-          .put(this.apiUrl + eleve.id, eleve)
+          .put(this.apiUrl + salon.id, salon)
           .subscribe(
             resp => null,
             err => console.log(err)
@@ -67,13 +69,13 @@ export class SalonService {
     }
   }
 
-  public delete(eleve: Salon) {
-    const pos: number = this.eleves.indexOf(eleve);
+  public delete(salon: Salon) {
+    const pos: number = this.salons.indexOf(salon);
 
     this.http
-      .delete(this.apiUrl + eleve.id)
+      .delete(this.apiUrl + salon.id)
       .subscribe(
-        resp => this.eleves.splice(pos, 1),
+        resp => this.salons.splice(pos, 1),
         err => console.log(err)
       );
   }

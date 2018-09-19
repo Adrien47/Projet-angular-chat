@@ -1,4 +1,6 @@
+// @ts-ignore
 import { Component, OnInit } from '@angular/core';
+// @ts-ignore
 import { ActivatedRoute } from '@angular/router';
 import { SalonService } from './salon.service';
 import { Salon } from './salon';
@@ -9,14 +11,14 @@ import { Salon } from './salon';
 })
 export class SalonDetailComponent implements OnInit {
 
-  private eleve: Salon = new Salon();
+  private salon: Salon = new Salon();
 
-  constructor(private route: ActivatedRoute, private eleveService: SalonService ) {
+  constructor(private route: ActivatedRoute, private salonService: SalonService ) {
     this.route.params.subscribe(params => {
       console.log(params['id']);
-      this.eleveService
+      this.salonService
         .findById(Number(params['id']), true)
-        .subscribe(resp => this.eleve = resp.json());
+        .subscribe(resp => this.salon = resp.json());
     });
   }
 

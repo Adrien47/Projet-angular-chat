@@ -4,38 +4,34 @@
     <thead>
     <tr>
       <th>Identifiant</th>
-      <th>Civilité</th>
+      <th>Version</th>
       <th>Nom</th>
-      <th>Prénom</th>
-      <th>Date de naissance</th>
+      <th>Description</th>
+      <th>Date de création</th>
       <th></th>
       <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let eleve of list()">
-      <td [routerLink]="['/eleve/'+eleve.id]">{{eleve.id}}</td>
-      <td>{{eleve.civilite | civiliteAsString}}</td>
-      <td>{{eleve.nom}}</td>
-      <td>{{eleve.prenom}}</td>
-      <td>{{eleve.dtNaissance | date:"dd/MM/yyyy"}}</td>
-      <td><a class="btn btn-info" (click)="edit(eleve.id)">Editer</a></td>
-      <td><a class="btn btn-danger" (click)="delete(eleve.id)">Supprimer</a></td>
+    <tr *ngFor="let salon of list()">
+      <td [routerLink]="['/salon/'+salon.id]">{{salon.id}}</td>
+      <td>{{salon.nom}}</td>
+      <td>{{salon.version}}</td>
+      <td>{{salon.description}}</td>
+      <td>{{salon.dateCreation | date:"dd/MM/yyyy"}}</td>
+      <td><a class="btn btn-info" (click)="edit(salon.id)">Editer</a></td>
+      <td><a class="btn btn-danger" (click)="delete(salon.id)">Supprimer</a></td>
     </tr>
     <tr>
       <td colspan="7"><a class="btn btn-success" (click)="add()">Ajouter</a></td>
     </tr>
-    <tr *ngIf="formEleve">
-      <td>{{formEleve.id}}</td>
-      <td>
-          <select [(ngModel)]="formEleve.civilite">
-              <option value="0">Monsieur</option>
-              <option value="1">Madame</option>
-          </select>
-      </td>
-      <td><input type="text" [(ngModel)]="formEleve.nom"/></td>
-      <td><input type="text" [(ngModel)]="formEleve.prenom"/></td>
-      <td><input type="date" [(ngModel)]="formEleve.dtNaissance"/></td>
+    <tr *ngIf="formSalon">
+      <td>{{formSalon.id}}</td>
+
+      <td><input type="text" [(ngModel)]="formSalon.version"/></td>
+      <td><input type="text" [(ngModel)]="formSalon.nom"/></td>
+      <td><input type="date" [(ngModel)]="formEleve.description"/></td>
+      <td><input type="date" [(ngModel)]="formEleve.dateCreation"/></td>
       <td><a class="btn btn-info" (click)="save()">Valider</a></td>
       <td><a class="btn btn-warning" (click)="cancel()">Annuler</a></td>
     </tr>
