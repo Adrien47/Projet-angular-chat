@@ -4,7 +4,7 @@ export class Salon {
   nom: string;
   description: string;
   dateCreation: Date;
-  créateur: any = '';
+  createur: any = '';
 
 
   constructor(id?: number, version?: number, nom?: string, description?: string, dateCreation?: Date) {
