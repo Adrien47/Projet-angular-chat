@@ -5,6 +5,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {MessageComponent} from './message.component';
+import {MessageService} from './message.service';
 
 
 
@@ -20,8 +21,7 @@ const routes: Routes = [
     HttpModule,
   ],
   providers: [
-    MessageService,
-
+    MessageService
 
   ],
   declarations: [

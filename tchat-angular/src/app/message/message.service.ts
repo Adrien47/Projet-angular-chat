@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {Message} from './message';
 
 import {Http} from '@angular/http';
-import {AppConfigService} from '../app/app-config.service';
+import {AppConfigService} from '../app-config.service';
+
 
 
 @Injectable()
-export class SalonService {
-  salons: Array<Message> = new Array<Message>();
+export class MessageService {
+  messages: Array<Message> = new Array<Message>();
   apiUrl = '';
 
   constructor(private http: Http, private appConfig: AppConfigService) {
@@ -39,14 +40,14 @@ export class SalonService {
     return null;
   }
 
-  public save(salon: Salon) {
-    if (salon) {
-      if (!salon.id) {
+  public save(message: Message) {
+    if (message) {
+      if (!message.id) {
 
-        if (this.salons.length > 0) {
-          salon.id = this.salons[this.salons.length - 1].id + 1;
+        if (this.messages.length > 0) {
+          message.id = this.messages[this.messages.length - 1].id + 1;
         } else {
-          salon.id = 1;
+          message.id = 1;
         }
 
 
@@ -69,8 +70,8 @@ export class SalonService {
     }
   }
 
-  public delete(salon: Message) {
-    const pos: number = this.salons.indexOf(message);
+  public delete(message: Message) {
+    const pos: number = this.messages.indexOf(message);
 
     this.http
       .delete(this.apiUrl + message.id)

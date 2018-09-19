@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {SalonService} from './salon.service';
-import {Salon} from './salon';
+import {MessageService} from './message.service';
 import {Message} from './message';
 
 @Component({
-  selector: "app-message"
+  selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
@@ -12,7 +11,7 @@ export class MessageComponent implements OnInit {
 
   private formMessage: Message = null;
 
-  constructor(private salonMessage: MessageService) {
+  constructor(private messageService: MessageService) {
   }
 
   ngOnInit() {

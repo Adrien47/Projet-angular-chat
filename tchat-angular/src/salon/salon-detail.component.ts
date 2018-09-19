@@ -6,7 +6,7 @@ import { SalonService } from './salon.service';
 import { Salon } from './salon';
 
 @Component({
-  templateUrl: './salon-detail.component.html',
+  templateUrl: './salon-message.component.html',
   styleUrls: ['./salon-detail.component.css']
 })
 export class SalonDetailComponent implements OnInit {
