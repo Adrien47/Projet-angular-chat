@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {MessageModule} from './message/matiere.module';
+import {MessageModule} from './message/message.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import {MessageModule} from './message/matiere.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MessageModule
+    MessageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

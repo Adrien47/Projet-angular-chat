@@ -7,9 +7,8 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 const routes: Routes = [
-  {path: 'matiere', component: MessageComponent},
-  {path: 'matiere/:id', component: MatiereDetailComponent}
-  ];
+  {path: 'message', component: MessageComponent},
+    ];
 
 @NgModule({
   imports: [

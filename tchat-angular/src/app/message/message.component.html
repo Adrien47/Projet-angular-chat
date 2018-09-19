@@ -1,0 +1,36 @@
+<div class="container">
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Identifiant</th>
+      <th>Date</th>
+      <th>Expéditeur</th>
+      <th>Message</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let message of list()">
+      <td>{{message.id}}</td>
+      <td>{{message.date}}</td>
+      <td>{{message.expediteur}}</td>
+      <td>{{matiere.texte}}</td>
+
+    </tr>
+    <tr>
+      <td colspan="6"><a class="btn btn-success" (click)="add()">Envoyer</a></td>
+    </tr>
+    <tr *ngIf="formMessage">
+      <td>{{formMessage.id}}</td>
+      <td>{{formMessage.date}}</td>
+      <td>{{formMessage.expediteur}}</td>
+      <td><input type="text" [(ngModel)]="formMessage.texte"/></td>
+      <td><a class="btn btn-info" (click)="save()">Valider</a></td>
+      <td><a class="btn btn-warning">Annuler</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+

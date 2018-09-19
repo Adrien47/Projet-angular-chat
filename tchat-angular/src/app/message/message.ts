@@ -1,18 +1,15 @@
 export class Message {
   id: number;
-  version: number;
-  nom: string;
-  difficulte: string;
-  dtDebut: Date;
-  dtFin: Date;
+  texte: string;
+  date: Date;
+  expediteur: string;
 
 
-  constructor(id?: number, version?: number, nom?: string, difficulte?: string, dtDebut?: Date, dtFin?: Date) {
+
+  constructor(id?: number, texte?: string, date?: Date, expediteur?: string) {
     this.id = id;
-    this.version = version;
-    this.nom = nom;
-    this.difficulte = difficulte;
-    this.dtDebut = dtDebut;
-    this.dtFin = dtFin;
+    this.texte = texte;
+    this.date = date;
+    this.expediteur = expediteur;
   }
 }

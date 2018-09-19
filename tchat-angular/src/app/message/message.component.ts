@@ -1,40 +1,34 @@
 import {Component, OnInit} from '@angular/core';
 import {MessageService} from './message.service';
-import {Matiere} from './message';
+import {Message} from './message';
 
 @Component({
   selector: 'app-matiere',
-  templateUrl: './matiere.component.html',
+  templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
 export class MessageComponent implements OnInit {
 
-  private formMatiere: Matiere = null;
+  private formMessage: Message = null;
 
-  constructor(private matiereService: MessageService) {
+  constructor(private messageService: MessageService) {
   }
 
   ngOnInit() {
   }
 
   public list() {
-    return this.matiereService.findAll();
+    return this.messageService.findAll();
   }
 
   public add() {
-    this.formMatiere = new Matiere();
-  }
-
-  public edit(id: number) {
-    this.formMatiere = this.matiereService.findById(id);
+    this.formMessage = new Message();
   }
 
   public save() {
-    this.matiereService.save(this.formMatiere);
-    this.formMatiere = null;
+    this.messageService.save(this.formMessage);
+    this.formMessage = null;
   }
 
-  public delete(id: number) {
-    this.matiereService.delete(this.matiereService.findById(id));
-  }
+
 }

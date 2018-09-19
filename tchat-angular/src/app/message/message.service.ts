@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Message } from './message';
-import { AppConfigService } from '../app-config.service';
-
-
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
+import {Message} from './message';
+import {AppConfigService} from '../app-config.service';
 
 
 @Injectable()
@@ -11,16 +9,13 @@ export class MessageService {
   messages: Array<Message> = new Array<Message>();
   apiUrl = '';
 
-  constructor(private http: Http, private appConfig:  AppConfigService) {
+  constructor(private http: Http, private appConfig: AppConfigService) {
     this.apiUrl = appConfig.apiUrl + '/matiere/';
 
     this.http
       .get(this.apiUrl)
-      .subscribe(resp => this.matieres = resp.json());
+      .subscribe(resp => this.messages = resp.json());
 
-    // this.matieres.push(new Matiere(1, 0, 'JPA', 'FACILE', new Date(), new Date()));
-    // this.matieres.push(new Matiere(2, 1, 'HTML', 'DIFFICILE', new Date(), new Date()));
-    // this.matieres.push(new Matiere(3, 0, 'JAVASCRIPT', 'FACILE', new Date(), new Date()));
   }
 
   public findAll() {
@@ -33,9 +28,9 @@ export class MessageService {
         .get(this.apiUrl + id);
     }
 
-    for (const matiere of this.matieres) {
-      if (matiere.id === id) {
-        return matiere;
+    for (const message of this.messages) {
+      if (message.id === id) {
+        return message;
       }
     }
 
@@ -43,27 +38,25 @@ export class MessageService {
   }
 
 
-  public save(matiere: Matiere) {
-    if (matiere) {
-      if (!matiere.id) {
-        matiere.version = 0;
-        if (this.matieres.length > 0) {
-          matiere.id = this.matieres[this.matieres.length - 1].id + 1;
+  public save(message: Message) {
+    if (message) {
+      if (!message.id) {
+        if (this.messages.length > 0) {
+          message.id = this.messages[this.messages.length - 1].id + 1;
         } else {
-          matiere.id = 1;
+          message.id = 1;
         }
 
-        // this.matieres.push(matiere);
 
         this.http
-          .post(this.apiUrl, matiere)
+          .post(this.apiUrl, message)
           .subscribe(
-            resp => this.matieres.push(matiere),
+            resp => this.messages.push(message),
             err => console.log(err)
           );
       } else {
         this.http
-          .put(this.apiUrl + matiere.id, matiere)
+          .put(this.apiUrl + message.id, message)
           .subscribe(
             resp => null,
             err => console.log(err)
@@ -72,13 +65,13 @@ export class MessageService {
     }
   }
 
-  public delete(matiere: Matiere) {
-    const pos: number = this.matieres.indexOf(matiere);
+  public delete(message: Message) {
+    const pos: number = this.messages.indexOf(message);
 
     this.http
-      .delete(this.apiUrl + matiere.id)
+      .delete(this.apiUrl + message.id)
       .subscribe(
-        resp => this.matieres.splice(pos, 1),
+        resp => this.messages.splice(pos, 1),
         err => console.log(err)
       );
   }
