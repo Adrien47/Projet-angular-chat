@@ -1,13 +1,18 @@
-
 import {FormsModule} from '@angular/forms';
 import {SalonModule} from '../salon/salon.module';
-import {MessageModule} from './message/matiere.module';
+
 import {AppComponent} from './app.component';
 import {HttpModule} from '@angular/http';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {RouterModule, Routes} from '@angular/router';
+import {AppConfigService} from './app-config.service';
+
+const routes: Routes = [
 
 
+
+];
 @NgModule({
   declarations: [
     AppComponent
@@ -16,10 +21,12 @@ import {BrowserModule} from '@angular/platform-browser';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MessageModule,
+    RouterModule,
+    RouterModule.forRoot(routes),
     SalonModule
   ],
-  providers: [],
+  providers: [AppConfigService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
